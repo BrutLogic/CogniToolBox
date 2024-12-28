@@ -1,7 +1,7 @@
 import os
 import random
 from openai import OpenAI
-from cogni import tool, Conversation, Tool, Log, Event, SocketManager
+from cogni import tool, Conversation, Tool  # , Log, Event, SocketManager
 from rich import print
 import requests
 
@@ -19,7 +19,7 @@ def llm(conversation: Conversation, model='gpt-4') -> Conversation:
 
     if '{tool' in conversation[1].content:
         raise Exception('Wrong parsing')
-
+    # /FIXME
     msg_id = ''.join([random.choice('abcdefghijklmno5896321470')
                      for _ in range(10)])
     base_message_id = conversation.discord.get('base')
